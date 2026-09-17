@@ -1,0 +1,21 @@
+name: Continuous Integration Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Run automated test
+        run: |
+          echo "Checking if index.html exists..."
+          test -f index.html
+          echo "Automated tests passed successfully!"
